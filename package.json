@@ -12,7 +12,8 @@
   "test:allure": "npm run cy:run && npm run allure:generate",
   "test:qa": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run",
 "test:qa:smoke": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run --spec \"cypress/e2e/smoke/**/*.cy.js\"",
-"test:qa:regression": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run --spec \"cypress/e2e/regression/**/*.cy.js\""
+"test:qa:regression": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run --spec \"cypress/e2e/regression/**/*.cy.js\"",
+"test:api": "cypress run --spec \"cypress/e2e/api/**/*.cy.js\""
 },
   "keywords": [],
   "author": "",
