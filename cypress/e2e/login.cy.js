@@ -36,4 +36,28 @@ describe("Login - SauceDemo", () => {
                 .and("contain", "Username and password do not match");
         });
     });
+
+    it("Debe mostrar error cuando el usuario está vacío", () => {
+        cy.fixture("users").then((users) => {
+            LoginPage.typePassword(users.password);
+            LoginPage.clickLogin();
+
+            LoginPage.elements
+                .errorMessage()
+                .should("be.visible")
+                .and("contain", "Username is required");
+        });
+    });
+
+    it("Debe mostrar error cuando el password está vacío", () => {
+        cy.fixture("users").then((users) => {
+            LoginPage.typeUsername(users.validUser);
+            LoginPage.clickLogin();
+
+            LoginPage.elements
+                .errorMessage()
+                .should("be.visible")
+                .and("contain", "Password is required");
+        });
+    });
 });
