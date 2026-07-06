@@ -9,7 +9,10 @@
   "test:regression": "cypress run --spec \"cypress/e2e/regression/**/*.cy.js\"",
   "allure:generate": "allure generate allure-results --clean -o allure-report",
   "allure:open": "allure open allure-report",
-  "test:allure": "npm run cy:run && npm run allure:generate"
+  "test:allure": "npm run cy:run && npm run allure:generate",
+  "test:qa": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run",
+"test:qa:smoke": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run --spec \"cypress/e2e/smoke/**/*.cy.js\"",
+"test:qa:regression": "set CYPRESS_BASE_URL=https://www.saucedemo.com&& cypress run --spec \"cypress/e2e/regression/**/*.cy.js\""
 },
   "keywords": [],
   "author": "",
