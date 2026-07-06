@@ -1,4 +1,4 @@
-import InventoryPage from "../pages/InventoryPage";
+import InventoryPage from "../../pages/InventoryPage";
 
 describe("Inventory - SauceDemo", () => {
     // ------------------------------------------------------------------

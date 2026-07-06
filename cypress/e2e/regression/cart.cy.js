@@ -1,5 +1,5 @@
-import InventoryPage from "../pages/InventoryPage";
-import CartPage from "../pages/CartPage";
+import InventoryPage from "../../pages/InventoryPage";
+import CartPage from "../../pages/CartPage";
 
 describe("Cart - SauceDemo", () => {
     // Antes de cada prueba iniciamos sesión.

@@ -1,6 +1,6 @@
-import InventoryPage from "../pages/InventoryPage";
-import CartPage from "../pages/CartPage";
-import CheckoutPage from "../pages/CheckoutPage";
+import InventoryPage from "../../pages/InventoryPage";
+import CartPage from "../../pages/CartPage";
+import CheckoutPage from "../../pages/CheckoutPage";
 
 describe("Checkout - SauceDemo", () => {
     beforeEach(() => {

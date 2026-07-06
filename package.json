@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "cy:open": "cypress open",
+  "cy:run": "cypress run",
+  "test:smoke": "cypress run --spec \"cypress/e2e/smoke/**/*.cy.js\"",
+  "test:regression": "cypress run --spec \"cypress/e2e/regression/**/*.cy.js\""
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
