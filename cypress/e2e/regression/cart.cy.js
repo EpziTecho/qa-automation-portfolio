@@ -6,9 +6,7 @@ describe("Cart - SauceDemo", () => {
     // Luego agregamos Backpack y entramos al carrito.
     // Así cada test empieza desde un estado conocido.
     beforeEach(() => {
-        cy.fixture("users").then((users) => {
-            cy.login(users.validUser, users.password);
-        });
+        cy.loginAsStandardUser();
 
         InventoryPage.addBackpackToCart();
         InventoryPage.goToCart();

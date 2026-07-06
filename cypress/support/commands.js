@@ -31,3 +31,10 @@ Cypress.Commands.add("login", (username, password) => {
     LoginPage.visit();
     LoginPage.login(username, password);
 });
+// Login específico para el usuario estándar.
+// Evita repetir cy.fixture('users') en varios specs.
+Cypress.Commands.add("loginAsStandardUser", () => {
+    cy.fixture("users").then((users) => {
+        cy.login(users.validUser, users.password);
+    });
+});

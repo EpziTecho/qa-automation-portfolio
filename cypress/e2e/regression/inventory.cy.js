@@ -10,9 +10,7 @@ describe("Inventory - SauceDemo", () => {
     // ------------------------------------------------------------------
 
     beforeEach(() => {
-        cy.fixture("users").then((users) => {
-            cy.login(users.validUser, users.password);
-        });
+        cy.loginAsStandardUser();
     });
 
     it("Debe mostrar la página de productos correctamente", () => {

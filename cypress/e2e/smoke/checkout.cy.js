@@ -4,9 +4,7 @@ import CheckoutPage from "../../pages/CheckoutPage";
 
 describe("Checkout - SauceDemo", () => {
     beforeEach(() => {
-        cy.fixture("users").then((users) => {
-            cy.login(users.validUser, users.password);
-        });
+        cy.loginAsStandardUser();
 
         InventoryPage.addBackpackToCart();
         InventoryPage.goToCart();
