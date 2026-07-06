@@ -1,0 +1,55 @@
+# ======================================================================
+# GitHub Actions - Cypress Tests
+#
+# Este workflow ejecuta las pruebas automatizadas de Cypress
+# cada vez que hacemos push o pull request hacia la rama main.
+# ======================================================================
+
+name: Cypress Tests
+
+# Define cuándo se ejecutará el pipeline.
+on:
+    push:
+        branches:
+            - main
+
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    cypress-run:
+        # GitHub usará una máquina virtual con Ubuntu.
+        runs-on: ubuntu-latest
+
+        steps:
+            # Descarga el código del repositorio dentro del runner.
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            # Instala Node.js.
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            # Instala las dependencias del package.json.
+            - name: Install dependencies
+              run: npm ci
+
+            # Ejecuta todas las pruebas Cypress.
+            - name: Run Cypress tests
+              run: npm run cy:run
+
+            # Genera el reporte Allure.
+            - name: Generate Allure Report
+              if: always()
+              run: npm run allure:generate
+
+            # Guarda el reporte como artefacto descargable.
+            - name: Upload Allure Report
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: allure-report
+                  path: allure-report
