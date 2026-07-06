@@ -1,25 +1,33 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
+// ======================================================================
+// commands.js
 //
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
+// Aquí creamos comandos personalizados de Cypress.
 //
+// Un Custom Command permite extender el objeto cy.
+// Por ejemplo, en lugar de repetir todo el flujo de login:
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+// cy.visit('/')
+// cy.get(...).type(...)
+// cy.get(...).click()
 //
+// podremos usar:
 //
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+// cy.login(username, password)
 //
+// Esto hace que los tests sean más limpios, reutilizables y mantenibles.
+// ======================================================================
+
+import LoginPage from "../pages/LoginPage";
+
+// ----------------------------------------------------------------------
+// cy.login(username, password)
 //
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Este comando recibe usuario y contraseña.
+// Internamente usa el Page Object LoginPage.
+// Así mantenemos los selectores centralizados en LoginPage.js.
+// ----------------------------------------------------------------------
+
+Cypress.Commands.add("login", (username, password) => {
+    LoginPage.visit();
+    LoginPage.login(username, password);
+});

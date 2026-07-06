@@ -11,11 +11,7 @@ describe("Inventory - SauceDemo", () => {
 
     beforeEach(() => {
         cy.fixture("users").then((users) => {
-            cy.visit("/");
-
-            cy.get('[data-test="username"]').type(users.validUser);
-            cy.get('[data-test="password"]').type(users.password);
-            cy.get('[data-test="login-button"]').click();
+            cy.login(users.validUser, users.password);
         });
     });
 

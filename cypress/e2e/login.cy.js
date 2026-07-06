@@ -11,7 +11,7 @@ describe("Login - SauceDemo", () => {
 
     it("Debe iniciar sesión con credenciales válidas", () => {
         cy.fixture("users").then((users) => {
-            LoginPage.login(users.validUser, users.password);
+            cy.login(users.validUser, users.password);
             cy.url().should("include", "/inventory.html");
             cy.get('[data-test="title"]').should("contain", "Products");
         });
